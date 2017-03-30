@@ -1,0 +1,32 @@
+#bottom, #bottom input {
+    padding: 5px;
+}
+
+#bottom {
+    position: relative;
+    width: 320px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    text-align: center;
+    background: #909090;
+    border-radius: 5px;
+}
+
+#bottom input {
+    margin: 5px;
+    font-size: 16px;
+    width: 240px;
+    border-radius: 2px;
+}
+
+#bottom input:required:invalid {
+    background: #BE4C54;
+    border:2px solid red;
+}
+
+#bottom input:required:valid {
+    background: #17D654 ;
+    border:2px solid lawngreen;
+}

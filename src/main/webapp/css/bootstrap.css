@@ -1,0 +1,23 @@
+* {
+    font-family: "Comic Sans MS";
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #cccccc;
+}
+
+header .exchange .bot {
+    width: auto;
+    background: #c60016;
+    display: block;
+}
+
+.bot {
+    margin-top: 100px;
+}
+
+
+
+
+

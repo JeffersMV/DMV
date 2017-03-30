@@ -1,0 +1,57 @@
+.header {
+    position: relative;
+    width: 1020px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 145px;
+}
+
+/*#left_header, #right_header {*/
+    /*position: absolute;*/
+    /*width: 50%;*/
+    /*height: 100%;*/
+    /*top: 0;*/
+    /*right: 0;*/
+/*}*/
+
+.left_header {
+    padding: 5px 5px 5px 15px;
+    text-transform: uppercase;
+    position: relative;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    right: 0;
+}
+
+.left_header h2, .left_header h3 {
+    margin-bottom: 0;
+    margin-top: 0;
+    white-space: nowrap;
+}
+
+.left_header h2 {
+    font-size: 26px;
+    letter-spacing: -1px;
+}
+
+.left_header h3 {
+    font-size: 20px;
+    padding-left: 2px;
+    text-transform: lowercase;
+}
+
+.right_header {
+    padding: 15px;
+    font-size: 16px;
+    text-align: right;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    right: 0;
+}
+
+.phone_right_header {
+    font-size: 22px;
+}
