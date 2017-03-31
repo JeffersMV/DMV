@@ -1,9 +1,6 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public abstract class DaoAbstract<E>{
@@ -21,9 +18,9 @@ public abstract class DaoAbstract<E>{
     public List<E> getAll() throws DaoException {
         List<E> entityList;
         preparedStatement = getPrepareStatement(getSelectQuery(), preparedStatement);
-        try (ResultSet rs = preparedStatement.executeQuery()) {
-            entityList = parseResultSet(rs);
-        } catch (Exception e) {
+        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+            entityList = parseResultSet(resultSet);
+        } catch (SQLException e) {
             throw new DaoException(e);
         }
         return entityList;
@@ -31,19 +28,11 @@ public abstract class DaoAbstract<E>{
 
 
     private PreparedStatement getPrepareStatement(String sql, PreparedStatement preparedStatement) throws DaoException {
-        if (preparedStatement == null) {
             try {
                 preparedStatement = connection.prepareStatement(sql);
             } catch (SQLException e) {
                 throw new DaoException(e);
             }
-        } else {
-            try {
-                preparedStatement.clearParameters();
-            } catch (SQLException e) {
-                throw new DaoException(e);
-            }
-        }
         return preparedStatement;
     }
 }
