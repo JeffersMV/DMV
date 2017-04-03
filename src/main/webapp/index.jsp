@@ -418,9 +418,9 @@
             </p>
             <div>
                 <form action="ShowServlet" method="get" novalidate="novalidate">
-                    <input type="text" name="name" value="" required="required" placeholder="Ваше имя"/><br>
-                    <input type="text" name="phone" value="" required="required" placeholder="+375 __ ___ __ __"/><br>
-                    <input type="text" name="e-mail" value="" required="required" placeholder="E-mail"/><br>
+                    <input type="text" name="name" value="<core:if test="${param.get('name') != null}">${param.get('name')}</core:if>" required="required" placeholder="Ваше имя"/><br>
+                    <input type="text" name="phone" value="<core:if test="${param.get('phone') != null}">${param.get('phone')}</core:if>" required="required" placeholder="+375 __ ___ __ __"/><br>
+                    <input type="text" name="e-mail" value="<core:if test="${param.get('e-mail') != null}">${param.get('e-mail')}</core:if>" required="required" placeholder="E-mail"/><br>
                     <input type="submit" name="action" value="SEND"/>
                 </form>
             </div>
