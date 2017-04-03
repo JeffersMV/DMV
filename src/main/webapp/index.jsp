@@ -166,10 +166,25 @@
                     <ul class="double">
                             <%--@elvariable id="dtoList" type="java.util.List"--%>
                         <core:forEach var="dto" items="${dtoList}">
-                            <li><p>${dto.id}|<fmt:formatDate pattern="yyyy-MM-dd" value="${dto.data}"/>|${dto.name}</p>
+                            <li><a href="${pageContext.request.contextPath}/ShowServlet?action=onePhoto&id=${dto.id}" title="${dto.name}">
+                                <p>${dto.id}|<fmt:formatDate pattern="yyyy-MM-dd" value="${dto.data}"/>|${dto.name}</p>
                                 <img src="${dto.photo}" width="480">
+                                </a>
                             </li>
                         </core:forEach>
+                    </ul>
+                </div>
+            </core:when>
+            <%--ONE PHOTO--%>
+            <core:when test="${param.get('action') == 'onePhoto'}">
+                <jsp:useBean id="photoDTO" scope="request" type="dto.PhotoDTO"/>
+                <div class="replaceable_body">
+                    <ul class="double">
+                            <li style="width: 100%"><a href="${pageContext.request.contextPath}/ShowServlet?action=photo" title="${photoDTO.name}">
+                                <p style="width: 1020px">${photoDTO.id}|<fmt:formatDate pattern="yyyy-MM-dd" value="${photoDTO.data}"/>|${photoDTO.name}</p>
+                                <img src="${photoDTO.photo}" width="1020">
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </core:when>

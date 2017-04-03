@@ -11,17 +11,18 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class AudioDAO extends DaoAbstract<AudioDTO> {
+public class AudioDAO extends DaoAbstract<AudioDTO,Integer> {
 
     public AudioDAO(Connection connection) throws DaoException, SQLException {
         super(connection);
     }
 
     @Override
-    protected String getSelectQuery() {return "SELECT id, name, data, audio FROM audios";}
+    public String getSelectQuery() {return "SELECT * FROM audios";}
+
 
     @Override
-    protected List<AudioDTO> parseResultSet(ResultSet rs) throws DaoException {
+    public List<AudioDTO> parseResultSet(ResultSet rs) throws DaoException {
         List<AudioDTO> lst = new LinkedList<>();
         try {
             while (rs.next()) {

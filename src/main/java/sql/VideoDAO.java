@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class VideoDAO extends DaoAbstract<VideoDTO> {
+public class VideoDAO extends DaoAbstract<VideoDTO,Integer> {
 
     public VideoDAO(Connection connection) throws DaoException, SQLException {
         super(connection);
@@ -19,7 +19,7 @@ public class VideoDAO extends DaoAbstract<VideoDTO> {
 
     @Override
     protected String getSelectQuery() {
-        return "SELECT id, name, data, video FROM videos";
+        return "SELECT * FROM videos";
     }
 
     @Override

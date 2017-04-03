@@ -1,6 +1,7 @@
 package servlets;
 
 import dao.DaoAbstract;
+import dto.PhotoDTO;
 import sql.AudioDAO;
 import sql.PhotoDAO;
 import sql.VideoDAO;
@@ -28,6 +29,8 @@ public class ShowServlet extends HttpServlet {
             sendDTOListOnPage(request, response, (VideoDAO) request.getSession().getAttribute("videoDAO"));
         } else if (Objects.equals(request.getParameter("action"), "photo")) {
             sendDTOListOnPage(request, response, (PhotoDAO) request.getSession().getAttribute("photoDAO"));
+        }else if (Objects.equals(request.getParameter("action"), "onePhoto")) {
+            sendPhotoDTOOnPage(request, response);
         } else if (Objects.equals(request.getParameter("action"), "SEND")) {
             if (request.getParameter("name").isEmpty()) {
                 request.getRequestDispatcher("/index.jsp?action=error&error=name_error").forward(request, response);
@@ -51,6 +54,18 @@ public class ShowServlet extends HttpServlet {
             request.getRequestDispatcher("/index.jsp?action=error&error=connect_BD").forward(request, response);
         }
         request.setAttribute("dtoList", dtoList);
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
+    }
+
+    private void sendPhotoDTOOnPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PhotoDTO photoDTO = null;
+        Integer id = Integer.valueOf(request.getParameter("id"));
+        try {
+            photoDTO = ((PhotoDAO) request.getSession().getAttribute("photoDAO")).getEntityByK(id);
+        } catch (Exception e) {
+            request.getRequestDispatcher("/index.jsp?action=error&error=connect_BD").forward(request, response);
+        }
+        request.setAttribute("photoDTO", photoDTO);
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

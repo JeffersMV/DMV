@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class PhotoDAO extends DaoAbstract<PhotoDTO> {
+public class PhotoDAO extends DaoAbstract<PhotoDTO,Integer> {
 
     public PhotoDAO(Connection connection) throws DaoException, SQLException {
         super(connection);
@@ -19,7 +19,7 @@ public class PhotoDAO extends DaoAbstract<PhotoDTO> {
 
     @Override
     protected String getSelectQuery() {
-        return "SELECT id, name, data, photo FROM photos";
+        return "SELECT * FROM photos";
     }
 
     @Override
