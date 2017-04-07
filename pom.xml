@@ -15,6 +15,7 @@
     <jstl.version>1.2</jstl.version>
     <mysql-connector-lava.version>5.1.40</mysql-connector-lava.version>
     <commons-email.version>1.4</commons-email.version>
+      <spring-context.version>4.3.7.RELEASE</spring-context.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
@@ -54,6 +55,11 @@
       <artifactId>commons-email</artifactId>
       <version>${commons-email.version}</version>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${spring-context.version}</version>
     </dependency>
   </dependencies>
   <build>
