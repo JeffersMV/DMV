@@ -1,7 +1,10 @@
 package servlets;
 
 import dao.DaoAbstract;
+import dao.DaoException;
 import dto.PhotoDTO;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import sql.AudioDAO;
 import sql.PhotoDAO;
 import sql.VideoDAO;
@@ -20,8 +23,21 @@ import java.util.List;
 import java.util.Objects;
 
 public class ShowServlet extends HttpServlet {
+
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml"); // Ищет бины в конфигурации
+        AudioDAO audioDAO = (AudioDAO) context.getBean("audioDAO");
+        PhotoDAO photoDAO = (PhotoDAO) context.getBean("photoDAO");
+        VideoDAO videoDAO = (VideoDAO) context.getBean("videoDAO");
+        try {
+            System.out.println(audioDAO.getAll());
+            System.out.println(photoDAO.getAll());
+            System.out.println(videoDAO.getAll());
+        } catch (DaoException e) {
+            System.out.println("Ошибка Бинов");
+        }
 
         if (Objects.equals(request.getParameter("action"), "audio")) {
             sendDTOListOnPage(request, response, (AudioDAO) request.getSession().getAttribute("audioDAO"));

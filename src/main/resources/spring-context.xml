@@ -3,11 +3,17 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="daoFactory" class="dao.DaoFactory" factory-method="getConnection"/>
 
-    <bean id="showServlet" class="servlets.ShowServlet"/>
-
-
-
-
+    <bean id="audioDAO" class="sql.AudioDAO">
+        <constructor-arg ref="daoFactory"/>
+    </bean>
+    <bean id="photoDAO" class="sql.PhotoDAO">
+        <constructor-arg ref="daoFactory"/>
+    </bean>
+    <bean id="videoDAO" class="sql.VideoDAO">
+        <constructor-arg ref="daoFactory"/>
+    </bean>
+    
 
 </beans>
