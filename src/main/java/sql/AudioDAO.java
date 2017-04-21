@@ -3,6 +3,7 @@ package sql;
 import dao.DaoAbstract;
 import dao.DaoException;
 import dto.AudioDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,16 +11,15 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-
 public class AudioDAO extends DaoAbstract<AudioDTO,Integer> {
 
+    @Autowired
     public AudioDAO(Connection connection) throws DaoException, SQLException {
         super(connection);
     }
 
     @Override
     public String getSelectQuery() {return "SELECT * FROM audios";}
-
 
     @Override
     public List<AudioDTO> parseResultSet(ResultSet rs) throws DaoException {

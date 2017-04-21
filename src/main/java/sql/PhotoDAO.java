@@ -3,6 +3,7 @@ package sql;
 import dao.DaoAbstract;
 import dao.DaoException;
 import dto.PhotoDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ import java.util.List;
 
 public class PhotoDAO extends DaoAbstract<PhotoDTO,Integer> {
 
+    @Autowired
     public PhotoDAO(Connection connection) throws DaoException, SQLException {
         super(connection);
     }
